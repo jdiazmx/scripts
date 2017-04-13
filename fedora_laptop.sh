@@ -104,6 +104,7 @@ dnf -y install wireshark
 
 dnf -y install bleachbit
 
+dnf -y install qemu
 dnf -y install VirtualBox
 
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
