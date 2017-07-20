@@ -18,7 +18,8 @@ dnf -y update
 
 dnf -y groupinstall "Development Tools"
 dnf -y groupinstall "Development Libraries"
-dnf -y groupinstall "Virtualization"
+dnf -y groupinstall "Engineering and Scientific"
+dnf -y groupinstall --with-optional Virtualization
 
 dnf -y install lm_sensors
 
@@ -97,6 +98,9 @@ dnf -y install android-tools
 dnf -y install arduino
 dnf -y install fritzing
 
+dnf -y install rtl-sdr
+dnf -y install gqrx
+
 dnf -y install aircrack-ng
 dnf -y install macchanger
 dnf -y install nmap
@@ -108,5 +112,8 @@ dnf -y install qemu
 dnf -y install VirtualBox
 
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
+
+# Para permitir ejecutar Blander Fedora 26
+rpm -e beignet 
 
 reboot
