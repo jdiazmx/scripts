@@ -19,19 +19,19 @@
 #                                                                    #
 ######################################################################
 
-ALTO=1024
-ANCHO=768
-X=171
-Y=0
+ALTO=720
+ANCHO=400
+X=0
+Y=65
 MAXIMO=1000
 
 DIR_ORIGINALES="originales"
 DIR_IMAGENES="images"
 DIR_TUTORIALES="tutoriales"
-DIR_TITULO_TUTORIAL="instalacion-centos"
+DIR_TITULO_TUTORIAL="OpenBSD_instalacion"
 RUTA_FINAL="$DIR_IMAGENES/$DIR_TUTORIALES/$DIR_TITULO_TUTORIAL"
 
-MARCA_AGUA="logotipo/logo.png"
+MARCA_AGUA="logo.png"
 ARCHIVO_HTML="paratutorial.html"
 
 EXTENSIONES=(png PNG jpg JPG jpeg JPEG)
@@ -64,10 +64,15 @@ for EXT in ${EXTENSIONES[@]}; do
       rm $IMAGEN
 
       # Texto para archivo HTML
-      echo "<p align=\"justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada lorem vitae nunc porta et vehicula odio gravida. Ut ac nibh nunc. Sed lacinia dignissim lacus, sit amet consequat risus cursus vel.</p>\n" >> $ARCHIVO_HTML
-      echo "<p align=\"center\"><img src=\"$RUTA_FINAL/$ARCHIVO_FINAL\" width=\"500\" /><br /> $ARCHIVO_FINAL</p>\n<p>&nbsp;&nbsp;</p>\n" >> $ARCHIVO_HTML 
+      echo -ne "<p align=\"justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada lorem vitae nunc porta et vehicula odio gravida. Ut ac nibh nunc. Sed lacinia dignissim lacus, sit amet consequat risus cursus vel.</p>\n" >> $ARCHIVO_HTML
+      echo -ne "<p align=\"center\"><img src=\"${RUTA_FINAL}/F-${IMAGEN}\" /><br />F-${IMAGEN}</p>\n<p>&nbsp;&nbsp;</p>\n" >> $ARCHIVO_HTML 
 
    done
 done
+
+rm ${RUTA_FINAL}/F-${MARCA_AGUA}
+
+# Creación de gif animado
+convert -loop 0 -page ${ALTO}x${ANCHO}+0+0 -delay 100 ${RUTA_FINAL}/*.png $DIR_TITULO_TUTORIAL.gif
 
 echo -ne "Fin del proceso.\n\n"
