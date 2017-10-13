@@ -110,6 +110,7 @@ dnf -y install bleachbit
 
 dnf -y install qemu
 dnf -y install VirtualBox
+dnf -y install ansible
 
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
 
