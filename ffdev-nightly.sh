@@ -120,8 +120,8 @@ echo -e "\e[0;37mArquitectura: \e[1;97m$ARQUITECTURA\e[0m"
 echo -e "\e[0;37mIdioma:       \e[1;97m$IDIOMA\e[0m"
 
 # Detección de la última version Firefox Developer Edition usando "echo, curl y sed" 
-BUILD_FFD=$(echo $(curl -s https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora-l10n/linux-$ARQUITECTURA/xpi/) | sed -r "s/.*firefox-([0-9\.a]+)\.$IDIOMA\.langpack\.xpi.*/\1/")
-URL_FFD="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-$BUILD_FFD.$IDIOMA.linux-$ARQUITECTURA.tar.bz2"
+BUILD_FFD=$(echo $(curl https://download-installer.cdn.mozilla.net/pub/devedition/releases/ | grep 'a href' | tail -1 | cut -f5 -d '/'))
+URL_FFD="https://download-installer.cdn.mozilla.net/pub/devedition/releases/$BUILD_FFD/linux-$ARQUITECTURA/$IDIOMA/firefox-$BUILD_FFD.tar.bz2"
 
 # Detección de instalación previa de Mozilla Firefox Developer Edition
 if [ -e /bin/$INICIA_FFD ]; then
