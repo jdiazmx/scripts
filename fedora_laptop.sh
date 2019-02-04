@@ -68,20 +68,8 @@ dnf -y install filezilla
 dnf -y install xchat
 dnf -y install pidgin
 
-dnf -y install gstreamer-ffmpeg
-dnf -y install gstreamer-plugins-bad
-dnf -y install gstreamer-plugins-bad-free-extras
-dnf -y install gstreamer-plugins-bad-nonfree
-dnf -y install gstreamer1
-dnf -y install gstreamer1-libav
-dnf -y install gstreamer1-plugins-bad-free
-dnf -y install gstreamer1-plugins-bad-free-extras
-dnf -y install gstreamer1-plugins-bad-freeworld
-dnf -y install gstreamer1-plugins-base
-dnf -y install gstreamer1-plugins-base-tools
-dnf -y install gstreamer1-plugins-good
-dnf -y install gstreamer1-plugins-good-extras
-dnf -y install gstreamer1-plugins-ugly
+dnf -y install gstreamer-*
+dnf -y install gstreamer1-*
 
 dnf -y install vlc
 dnf -y install vlc-extras
