@@ -114,7 +114,4 @@ dnf -y install ansible
 
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
 
-# Para permitir ejecutar Blander Fedora 26
-rpm -e beignet 
-
 reboot
