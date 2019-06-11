@@ -81,5 +81,8 @@ dnf -y install qemu
 dnf -y install ansible
 dnf -y install gnome-tweak-tool
 dnf -y install planner
+dnf -y install keepassx
+dnf -y install gtypist
+
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
 reboot
