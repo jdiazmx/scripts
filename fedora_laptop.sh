@@ -83,6 +83,7 @@ dnf -y install gnome-tweak-tool
 dnf -y install planner
 dnf -y install keepassx
 dnf -y install gtypist
+dnf -y install fuse-exfat
 
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
 reboot
