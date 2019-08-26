@@ -81,7 +81,7 @@ dnf -y install qemu
 dnf -y install ansible
 dnf -y install gnome-tweak-tool
 dnf -y install planner
-dnf -y install keepassx
+dnf -y install keepassxc
 dnf -y install gtypist
 dnf -y install fuse-exfat
 
