@@ -23,6 +23,7 @@ dnf -y install cdbs
 dnf -y install devscripts
 dnf -y install dh-make
 dnf -y install fakeroot
+dnf -y install screen
 dnf -y install sshfs
 dnf -y install unace
 dnf -y install unrar
