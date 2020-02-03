@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###############################################################################
-# Script de instalación para equipo con Fedora Linux 29 para el trabajo.      #
+# Script de instalación para equipo con Fedora Linux 31 para el trabajo.      #
 #                                                                             #
 # Autor: Jorge Antonio Díaz Lara - jorge.diaz@gmail.com                       #
 #                                  jorge@integraci.com.mx                     #    
