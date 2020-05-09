@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###############################################################################
-# Script de instalación para equipo con Fedora Linux 31 para el trabajo.      #
+# Script de instalación para equipo con Fedora Linux 32 para el trabajo.      #
 #                                                                             #
 # Autor: Jorge Antonio Díaz Lara - jorge.diaz@gmail.com                       #
 #                                  jorge@integraci.com.mx                     #    
@@ -33,7 +33,7 @@ dnf -y install uudeview
 dnf -y install arj
 dnf -y install cabextract
 dnf -y install wine
-dnf -y install jortho-dictionary-es
+
 dnf -y install hunspell-es
 dnf -y install man-pages-es
 dnf -y install man-pages-es-extra
@@ -48,20 +48,20 @@ dnf -y install gimp-data-extras
 dnf -y install inkscape
 dnf -y install ImageMagick
 dnf -y install dia
-dnf -y install freemind
+# dnf -y install freemind
 dnf -y install scribus
 dnf -y install xchm
 dnf -y install calibre
 dnf -y install transmission
 dnf -y install filezilla
-dnf -y install xchat
+dnf -y install hexchat
 dnf -y install pidgin
 dnf -y install gstreamer-*
 dnf -y install gstreamer1-*
 dnf -y install vlc
 dnf -y install vlc-extras
 dnf -y install mplayer
-dnf -y install gtk-recordmydesktop
+dnf -y install fros-recordmydesktop
 dnf -y install vokoscreen
 dnf -y install audacity
 dnf -y install kdenlive
@@ -77,11 +77,11 @@ dnf -y install aircrack-ng
 dnf -y install macchanger
 dnf -y install nmap
 dnf -y install wireshark
-dnf -y install bleachbit
+#dnf -y install bleachbit
 dnf -y install qemu
 dnf -y install ansible
 dnf -y install gnome-tweak-tool
-dnf -y install planner
+# dnf -y install planner
 dnf -y install keepassxc
 dnf -y install gtypist
 dnf -y install fuse-exfat
