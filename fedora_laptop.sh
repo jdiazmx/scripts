@@ -33,13 +33,9 @@ dnf -y install uudeview
 dnf -y install arj
 dnf -y install cabextract
 dnf -y install wine
-
-dnf -y install hunspell-es
-dnf -y install man-pages-es
 dnf -y install man-pages-es-extra
 dnf -y install system-config-language
 dnf -y install gparted
-dnf -y install nautilus-open-terminal
 dnf -y install clamtk
 dnf -y install vim
 dnf -y install blender
@@ -48,7 +44,6 @@ dnf -y install gimp-data-extras
 dnf -y install inkscape
 dnf -y install ImageMagick
 dnf -y install dia
-# dnf -y install freemind
 dnf -y install scribus
 dnf -y install xchm
 dnf -y install calibre
@@ -61,7 +56,6 @@ dnf -y install gstreamer1-*
 dnf -y install vlc
 dnf -y install vlc-extras
 dnf -y install mplayer
-dnf -y install fros-recordmydesktop
 dnf -y install vokoscreen
 dnf -y install audacity
 dnf -y install kdenlive
@@ -77,14 +71,33 @@ dnf -y install aircrack-ng
 dnf -y install macchanger
 dnf -y install nmap
 dnf -y install wireshark
-#dnf -y install bleachbit
+dnf -y install libvirt
 dnf -y install qemu
 dnf -y install ansible
 dnf -y install gnome-tweak-tool
-# dnf -y install planner
 dnf -y install keepassxc
 dnf -y install gtypist
 dnf -y install fuse-exfat
 
+# Conectarse a Escritorios Remotos
+dnf -y install remmina*
+
+# Cliente de Correo Electrónico
+dnf -y install evolution evolution-pst
+dnf -y install gnucash
+
+# Google Chrome
+dnf -y install fedora-workstation-repositories  
+dnf config-manager --set-enabled google-chrome
+dnf install google-chrome-stable
+
+# Drivers NVIDIA - Requerimientos
+dnf install acpid libglvnd-devel
+
+# Mozilla Firefox Developer Edition y Nightly
 curl https://jdiazmx.github.io/scripts/ffdev-nightly.sh | sh
+
+# Freeplane
+curl https://jdiazmx.github.io/scripts/instala_freeplane_fedora.sh | sh
+
 reboot
